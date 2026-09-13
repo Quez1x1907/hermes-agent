@@ -1,7 +1,18 @@
 # Config baked into $HERMES_HOME at image build for headless PaaS deploys.
-# GEMINI_API_KEY is provided via the platform environment.
+# Keys come from the platform environment (GEMINI_API_KEY, B_AI_API_KEY).
 database:
   journal_mode: "wal"
 model:
-  default: "gemini-3-flash-preview"
+  default: "gemini-3.8-flash"
   provider: "gemini"
+fallback_providers:
+  - provider: "gemini"
+    model: "gemini-3-flash-preview"
+  - provider: "custom"
+    model: "glm-5.3-flash"
+    base_url: "https://api.b.ai/v1"
+    key_env: "B_AI_API_KEY"
+  - provider: "custom"
+    model: "deepseek-v4.1-flash"
+    base_url: "https://api.b.ai/v1"
+    key_env: "B_AI_API_KEY"
