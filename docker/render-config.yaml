@@ -3,5 +3,5 @@
 database:
   journal_mode: "wal"
 model:
-  default: "gemini-2.5-flash"
+  default: "gemini-3-flash-preview"
   provider: "gemini"
