@@ -19,3 +19,5 @@ approvals:
   cron_mode: "approve"    # scheduled jobs run unattended
   unattended_mode: "approve"
   single_query_mode: "approve"
+memory:
+  provider: "honcho"      # durable user memory via HONCHO_API_KEY (survives redeploys)
