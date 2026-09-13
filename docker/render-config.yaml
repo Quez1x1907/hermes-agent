@@ -1,0 +1,7 @@
+# Config baked into $HERMES_HOME at image build for headless PaaS deploys.
+# GEMINI_API_KEY is provided via the platform environment.
+database:
+  journal_mode: "wal"
+model:
+  default: "gemini-2.5-flash"
+  provider: "gemini"

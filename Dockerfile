@@ -427,6 +427,7 @@ COPY --chmod=0755 docker/entrypoint-dispatch.sh /opt/hermes/docker/entrypoint-di
 # every other consumer.
 ENV PATH="/opt/hermes/bin:/opt/hermes/.venv/bin:/opt/data/.local/bin:${PATH}"
 RUN mkdir -p /opt/data
+COPY --chown=10000:10000 docker/render-config.yaml /opt/data/config.yaml
 VOLUME [ "/opt/data" ]
 
 # The image ENTRYPOINT is a tiny dispatcher rather than `/init` directly.
