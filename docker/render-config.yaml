@@ -3,11 +3,9 @@
 database:
   journal_mode: "wal"
 model:
-  default: "gemini-3.8-flash"
+  default: "gemini-3-flash-preview"
   provider: "gemini"
 fallback_providers:
-  - provider: "gemini"
-    model: "gemini-3-flash-preview"
   - provider: "custom"
     model: "glm-5.3-flash"
     base_url: "https://api.b.ai/v1"
@@ -16,3 +14,8 @@ fallback_providers:
     model: "deepseek-v4.1-flash"
     base_url: "https://api.b.ai/v1"
     key_env: "B_AI_API_KEY"
+approvals:
+  mode: "off"             # gateway chats: execute commands without Allow/Deny prompts
+  cron_mode: "approve"    # scheduled jobs run unattended
+  unattended_mode: "approve"
+  single_query_mode: "approve"
