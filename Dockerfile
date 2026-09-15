@@ -426,6 +426,10 @@ COPY --chmod=0755 docker/entrypoint-dispatch.sh /opt/hermes/docker/entrypoint-di
 # binary by absolute path, so this PATH ordering is transparent to
 # every other consumer.
 ENV PATH="/opt/hermes/bin:/opt/hermes/.venv/bin:/opt/data/.local/bin:${PATH}"
+# Fork: rclone for optional Google Drive state persistence (see docker/gdrive-sync.sh).
+RUN apt-get -o Acquire::Retries=3 update \
+    && apt-get -o Acquire::Retries=3 install -y --no-install-recommends rclone \
+    && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /opt/data
 COPY --chown=10000:10000 docker/render-config.yaml /opt/data/config.yaml
 VOLUME [ "/opt/data" ]

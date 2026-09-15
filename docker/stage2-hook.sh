@@ -695,3 +695,8 @@ if [ -z "${AGENT_BROWSER_EXECUTABLE_PATH:-}" ] && \
 fi
 
 echo "[stage2] Setup complete; starting user services"
+
+# --- Fork: optional Google Drive state persistence (restore + periodic push) ---
+if [ -f /opt/hermes/docker/gdrive-sync.sh ]; then
+    sh /opt/hermes/docker/gdrive-sync.sh || true
+fi
